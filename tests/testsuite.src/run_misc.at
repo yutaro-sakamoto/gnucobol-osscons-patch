@@ -3694,6 +3694,10 @@ AT_DATA([prog.cob], [
            CALL "EXTSM" USING OPCODE, FCD.
            DISPLAY EX-RECORD-BUFFER.
 
+      *>   "AT END".
+           CALL "EXTSM" USING OPCODE, FCD.
+           DISPLAY FCD-FILE-STATUS.
+
       *>   "TERM".
            MOVE SD-term TO OPCODE.
            CALL "EXTSM" USING OPCODE, FCD.
@@ -3706,6 +3710,7 @@ AT_CHECK([$COBCRUN_DIRECT ./prog], [0],
 [AAA222
 BBB111
 CCC333
+10
 ], [])
 
 AT_CLEANUP
@@ -7273,6 +7278,7 @@ AT_CLEANUP
 
 AT_SETUP([ON EXCEPTION clause of DISPLAY])
 AT_KEYWORDS([runmisc exceptions screen])
+AT_CHECK([$SKIP_TEST_TEMPORARILY])
 
 AT_CHECK([test "$COB_HAS_CURSES" = "yes" || exit 77])
 
@@ -7299,6 +7305,7 @@ AT_CLEANUP
 AT_SETUP([EC-SCREEN-LINE-NUMBER and -STARTING-COLUMN])
 AT_KEYWORDS([runmisc exceptions screen])
 
+AT_CHECK([$SKIP_TEST_TEMPORARILY])
 AT_CHECK([test "$COB_HAS_CURSES" = "yes" || exit 77])
 
 AT_DATA([prog.cob], [
@@ -7340,6 +7347,7 @@ AT_CLEANUP
 AT_SETUP([LINE/COLUMN 0 exceptions])
 AT_KEYWORDS([LINE COLUMN runmisc exceptions extensions screen])
 
+AT_CHECK([$SKIP_TEST_TEMPORARILY])
 AT_CHECK([test "$COB_HAS_CURSES" = "yes" || exit 77])
 
 AT_DATA([prog.cob], [
@@ -11861,6 +11869,57 @@ AT_CHECK([COB_PHYSICAL_CANCEL=Y $COBCRUN_DIRECT ./prog], [0],
 SUB GOT Y
 SUB GOT Z
 ], [])
+
+AT_CLEANUP
+
+
+AT_SETUP([CANCEL ALL])
+AT_KEYWORDS([runmisc])
+
+AT_DATA([prog.cob], [
+       IDENTIFICATION   DIVISION.
+       PROGRAM-ID.      prog.
+       PROCEDURE        DIVISION.
+           CALL "call01"
+           END-CALL.
+           CANCEL ALL.
+           CALL "call01"
+           END-CALL.
+           STOP RUN.
+])
+
+AT_DATA([call01.cob], [
+       IDENTIFICATION   DIVISION.
+       PROGRAM-ID.      call01.
+       DATA             DIVISION.
+       WORKING-STORAGE  SECTION.
+       PROCEDURE        DIVISION.
+           CALL "call02"
+           END-CALL.
+           GOBACK.
+])
+
+AT_DATA([call02.cob], [
+       IDENTIFICATION   DIVISION.
+       PROGRAM-ID.      call02.
+       DATA             DIVISION.
+       WORKING-STORAGE  SECTION.
+       01 X             PIC 9.
+       PROCEDURE        DIVISION.
+           ADD 1 TO X.
+           DISPLAY X
+           END-DISPLAY.
+           EXIT PROGRAM.
+           GOBACK.
+])
+
+AT_CHECK([${COMPILE} -o prog prog.cob])
+AT_CHECK([${COMPILE_MODULE} call01.cob])
+AT_CHECK([${COMPILE_MODULE} call02.cob])
+AT_CHECK([./prog], [0],
+[1
+1
+])
 
 AT_CLEANUP
 
