@@ -12,13 +12,19 @@ env:
 
 jobs:
   run-tests:
+    strategy:
+      matrix:
+        os: ["ubuntu:24.04"]
     runs-on: ubuntu-latest
+    container:
+      image: ${{ matrix.os }}
+
     steps:
 
       - name: Install prerequisite softwares
         run: |
-          sudo apt-get update -y
-          sudo apt-get install -y libncurses6 libncurses-dev ncurses-doc libgmp10 libgmp-dev m4 libtool help2man pkg-config gettext automake autoconf libxml2 libxml2-dev libxml2-utils libcjson1 libcjson-dev build-essential libdb-dev
+          apt-get update -y
+          apt-get install -y libncurses6 libncurses-dev ncurses-doc libgmp10 libgmp-dev m4 libtool help2man pkg-config gettext automake autoconf libxml2 libxml2-dev libxml2-utils libcjson1 libcjson-dev build-essential libdb-dev
 
       - uses: actions/checkout@v4
 
@@ -44,13 +50,13 @@ jobs:
       - name: Install vbisam
         working-directory: opensource-cobol-1.5.2J/vbisam
         run: |
-          sudo make install
+          make install
 
       - name: Install GnuCOBOL
         run: |
           ./configure --prefix=/usr/ --with-xml2 --with-cjson --with-vbisam
           make
-          sudo make install
+          make install
 
       - name: Run custom tests
         run: |
