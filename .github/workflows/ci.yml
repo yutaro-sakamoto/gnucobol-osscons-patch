@@ -6,9 +6,7 @@ on:
     types: [opened, reopened, review_requested, synchronize]
 
 env:
-  CPPFLAGS: "-I/usr/include"
-  LDFLAGS: "-L/usr/lib"
-  LD_LAIBRARY_PATH: "/usr/lib"
+  LD_LIBRARY_PATH: "/usr/lib"
 
 jobs:
   run-tests:
