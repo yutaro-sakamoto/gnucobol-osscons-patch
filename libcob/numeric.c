@@ -4027,12 +4027,127 @@ cob_bcd_cmp (cob_field *f1, cob_field *f2)
 #endif
 
 /*
+ * Extract BCD digits from a PACKED (COMP-3/COMP-6) field into a digit array.
+ * Each element of out[] receives a single digit value (0-9).
+ * Returns the number of digits extracted.
+ */
+static int
+extract_packed_digits (cob_field *f, unsigned char *out)
+{
+	const unsigned char	*data = f->data;
+	const int	size = (int)f->size;
+	const int	scale = COB_FIELD_SCALE (f);
+	/* For negative scale (PIC 99PPP), implied trailing zeros
+	   are not stored; only digits + scale digits are in the data */
+	const int	num_digits = (scale < 0)
+				? COB_FIELD_DIGITS (f) + scale
+				: COB_FIELD_DIGITS (f);
+	const int	has_sign_nibble = !COB_FIELD_NO_SIGN_NIBBLE (f);
+	const int	total_nibbles = has_sign_nibble
+				? 2 * size - 1 : 2 * size;
+	int		skip = total_nibbles - num_digits;
+	int		d = 0;
+	int		b;
+
+	for (b = 0; b < size && d < num_digits; b++) {
+		/* high nibble */
+		if (skip > 0) {
+			skip--;
+		} else {
+			out[d++] = data[b] >> 4;
+		}
+		/* low nibble — but last nibble is sign, not digit */
+		if (b == size - 1 && has_sign_nibble) {
+			break;
+		}
+		if (skip > 0) {
+			skip--;
+		} else if (d < num_digits) {
+			out[d++] = data[b] & 0x0F;
+		}
+	}
+	return d;
+}
+
+/*
+ * Compare two digit arrays aligned by decimal point.
+ * Each array has 'count' stored digits and 'scale' (positive = fractional
+ * digits, negative = implied trailing integer zeros).
+ * Returns -1, 0, or 1 for absolute value comparison (sign-unaware).
+ */
+static int
+compare_digit_arrays (
+	const unsigned char *d1, const int count1, const int scale1,
+	const unsigned char *d2, const int count2, const int scale2)
+{
+	const int	frac1 = (scale1 > 0) ? scale1 : 0;
+	const int	frac2 = (scale2 > 0) ? scale2 : 0;
+	const int	implied1 = (scale1 < 0) ? -scale1 : 0;
+	const int	implied2 = (scale2 < 0) ? -scale2 : 0;
+	const int	stored_int1 = count1 - frac1;
+	const int	stored_int2 = count2 - frac2;
+	const int	int1 = stored_int1 + implied1;
+	const int	int2 = stored_int2 + implied2;
+	const int	max_int  = (int1 > int2) ? int1 : int2;
+	const int	max_frac = (frac1 > frac2) ? frac1 : frac2;
+	const int	total = max_int + max_frac;
+	/*
+	 * For each field the digit layout is:
+	 *   [left_pad] [stored_int] [implied_zeros] [stored_frac] [right_pad]
+	 * Total positions = max_int + max_frac.
+	 */
+	const int	left1 = max_int - int1;
+	const int	left2 = max_int - int2;
+	int		i, idx1, idx2;
+	unsigned char	v1, v2;
+
+	idx1 = 0;
+	idx2 = 0;
+
+	for (i = 0; i < total; i++) {
+		/* digit from field 1 */
+		if (i < left1) {
+			v1 = 0;		/* left padding */
+		} else if (idx1 < stored_int1) {
+			v1 = d1[idx1++];	/* stored integer digits */
+		} else if (idx1 - stored_int1 < implied1) {
+			v1 = 0;		/* implied trailing zeros */
+			idx1++;
+		} else if (idx1 - stored_int1 - implied1 + stored_int1 < count1) {
+			/* stored fractional digits */
+			v1 = d1[stored_int1 + (idx1 - stored_int1 - implied1)];
+			idx1++;
+		} else {
+			v1 = 0;		/* right padding */
+		}
+
+		/* digit from field 2 */
+		if (i < left2) {
+			v2 = 0;
+		} else if (idx2 < stored_int2) {
+			v2 = d2[idx2++];
+		} else if (idx2 - stored_int2 < implied2) {
+			v2 = 0;
+			idx2++;
+		} else if (idx2 - stored_int2 - implied2 + stored_int2 < count2) {
+			v2 = d2[stored_int2 + (idx2 - stored_int2 - implied2)];
+			idx2++;
+		} else {
+			v2 = 0;
+		}
+
+		if (v1 != v2) {
+			return (v1 > v2) ? 1 : -1;
+		}
+	}
+	return 0;
+}
+
+/*
  * Compare a PACKED (COMP-3/COMP-6) field with a DISPLAY numeric field
  * without using GMP. Extracts BCD nibbles and ASCII digit bytes directly
  * and compares digit-by-digit after decimal-point alignment.
- *
- * f1, f2: the two fields (one PACKED, one DISPLAY, in either order)
- * f1_type, f2_type: their COB_FIELD_TYPE values
+ * Handles both positive and negative scales.
  *
  * Returns: negative if f1 < f2, 0 if equal, positive if f1 > f2
  */
@@ -4047,9 +4162,7 @@ cob_cmp_packed_display (cob_field *f1, const int f1_type,
 	int		p_count, d_count;
 	int		p_sign, d_sign, disp_sign_raw;
 	int		p_scale, d_scale;
-	int		p_int, d_int;
-	int		max_int, max_frac, total;
-	int		i, pi, di, result;
+	int		i, result;
 
 	/* Arrange: f_packed = COMP-3/COMP-6, f_disp = DISPLAY */
 	if (f1_type == COB_TYPE_NUMERIC_PACKED) {
@@ -4059,40 +4172,9 @@ cob_cmp_packed_display (cob_field *f1, const int f1_type,
 	}
 
 	/* --- Extract packed (COMP-3/COMP-6) digits --- */
-	p_count = COB_FIELD_DIGITS (f_packed);
+	p_count = extract_packed_digits (f_packed, pd);
 	p_scale = COB_FIELD_SCALE (f_packed);
 	p_sign = packed_is_negative (f_packed) ? -1 : 1;
-
-	{
-		const unsigned char	*data = f_packed->data;
-		const int	size = (int)f_packed->size;
-		const int	has_sign_nibble = !COB_FIELD_NO_SIGN_NIBBLE (f_packed);
-		/* total nibbles available for digits */
-		const int	total_nibbles = has_sign_nibble
-					? 2 * size - 1 : 2 * size;
-		int		skip = total_nibbles - p_count;
-		int		d = 0;
-		int		b;
-
-		for (b = 0; b < size && d < p_count; b++) {
-			/* high nibble */
-			if (skip > 0) {
-				skip--;
-			} else {
-				pd[d++] = data[b] >> 4;
-			}
-			/* low nibble — but last nibble is sign, not digit */
-			if (b == size - 1 && has_sign_nibble) {
-				break;
-			}
-			if (skip > 0) {
-				skip--;
-			} else if (d < p_count) {
-				pd[d++] = data[b] & 0x0F;
-			}
-		}
-		p_count = d;
-	}
 
 	/* --- Extract display digits --- */
 	d_count = COB_FIELD_DIGITS (f_disp);
@@ -4102,8 +4184,6 @@ cob_cmp_packed_display (cob_field *f1, const int f1_type,
 		const unsigned char	*data;
 		int			size, d;
 
-		/* COB_GET_SIGN_ADJUST may convert overpunched sign byte
-		   to a plain digit in-place; COB_PUT_SIGN_ADJUSTED restores it */
 		disp_sign_raw = COB_GET_SIGN_ADJUST (f_disp);
 		d_sign = (disp_sign_raw < 0) ? -1 : 1;
 
@@ -4131,7 +4211,6 @@ cob_cmp_packed_display (cob_field *f1, const int f1_type,
 		if (p_is_zero && d_is_zero) {
 			return 0;
 		}
-		/* treat zero as positive for sign comparison */
 		if (p_is_zero) p_sign = 1;
 		if (d_is_zero) d_sign = 1;
 	}
@@ -4142,45 +4221,9 @@ cob_cmp_packed_display (cob_field *f1, const int f1_type,
 		return swapped ? -result : result;
 	}
 
-	/* --- Align by decimal point and compare digit by digit --- */
-	p_int = p_count - p_scale;	/* integer part digit count */
-	d_int = d_count - d_scale;
-	max_int  = (p_int > d_int) ? p_int : d_int;
-	max_frac = (p_scale > d_scale) ? p_scale : d_scale;
-	total = max_int + max_frac;
-
-	result = 0;
-	pi = 0;
-	di = 0;
-	{
-		const int	p_pad_left  = max_int  - p_int;
-		const int	d_pad_left  = max_int  - d_int;
-		const int	p_pad_right = max_frac - p_scale;
-		const int	d_pad_right = max_frac - d_scale;
-
-		for (i = 0; i < total; i++) {
-			unsigned char pv, dv;
-
-			/* packed digit or zero-padding */
-			if (i < p_pad_left || i >= total - p_pad_right) {
-				pv = 0;
-			} else {
-				pv = (pi < p_count) ? pd[pi++] : 0;
-			}
-
-			/* display digit or zero-padding */
-			if (i < d_pad_left || i >= total - d_pad_right) {
-				dv = 0;
-			} else {
-				dv = (di < d_count) ? dd[di++] : 0;
-			}
-
-			if (pv != dv) {
-				result = (pv > dv) ? 1 : -1;
-				break;
-			}
-		}
-	}
+	/* --- Compare absolute values via digit arrays --- */
+	result = compare_digit_arrays (pd, p_count, p_scale,
+				       dd, d_count, d_scale);
 
 	/* negate result for negative values (both have same sign here) */
 	if (p_sign < 0) {
@@ -4188,6 +4231,63 @@ cob_cmp_packed_display (cob_field *f1, const int f1_type,
 	}
 
 	return swapped ? -result : result;
+}
+
+/*
+ * Compare two PACKED (COMP-3/COMP-6) fields with negative scale
+ * without using GMP.  For non-negative scales, the caller should
+ * prefer cob_bcd_cmp which uses optimized memcmp paths.
+ *
+ * Returns: negative if f1 < f2, 0 if equal, positive if f1 > f2
+ */
+static int
+cob_cmp_packed_packed (cob_field *f1, cob_field *f2)
+{
+	unsigned char	d1[COB_MAX_DIGITS + 1];
+	unsigned char	d2[COB_MAX_DIGITS + 1];
+	int		count1, count2;
+	int		sign1, sign2;
+	int		i, result;
+
+	/* Extract digits */
+	count1 = extract_packed_digits (f1, d1);
+	count2 = extract_packed_digits (f2, d2);
+
+	/* Determine signs */
+	sign1 = packed_is_negative (f1) ? -1 : 1;
+	sign2 = packed_is_negative (f2) ? -1 : 1;
+
+	/* Check for zero values */
+	{
+		int	is_zero1 = 1, is_zero2 = 1;
+		for (i = 0; i < count1; i++) {
+			if (d1[i] != 0) { is_zero1 = 0; break; }
+		}
+		for (i = 0; i < count2; i++) {
+			if (d2[i] != 0) { is_zero2 = 0; break; }
+		}
+		if (is_zero1 && is_zero2) {
+			return 0;
+		}
+		if (is_zero1) sign1 = 1;
+		if (is_zero2) sign2 = 1;
+	}
+
+	/* Quick sign comparison */
+	if (sign1 != sign2) {
+		return (sign1 > sign2) ? 1 : -1;
+	}
+
+	/* Compare absolute values */
+	result = compare_digit_arrays (d1, count1, COB_FIELD_SCALE (f1),
+				       d2, count2, COB_FIELD_SCALE (f2));
+
+	/* negate for negative values */
+	if (sign1 < 0) {
+		result = -result;
+	}
+
+	return result;
 }
 
 int
@@ -4210,10 +4310,12 @@ cob_numeric_cmp (cob_field *f1, cob_field *f2)
 	/* do bcd compare if possible */
 	if (f1_type == COB_TYPE_NUMERIC_PACKED
 	 && f2_type == COB_TYPE_NUMERIC_PACKED) {
-		/* for now skip negative scale, until this is added and tested */
+		/* non-negative scale: use optimized BCD memcmp path */
 		if (COB_FIELD_SCALE (f1) >= 0 && COB_FIELD_SCALE (f2) >= 0) {
 			return cob_bcd_cmp (f1, f2);
 		}
+		/* negative scale: use digit-array comparison (no GMP) */
+		return cob_cmp_packed_packed (f1, f2);
 	}
 #endif
 
@@ -4243,15 +4345,13 @@ cob_numeric_cmp (cob_field *f1, cob_field *f2)
 		}
 	}
 
-	/* COMP-3/COMP-6 vs DISPLAY with non-negative scale:
-	   compare by direct digit extraction, avoiding GMP */
-	if (COB_FIELD_SCALE (f1) >= 0 && COB_FIELD_SCALE (f2) >= 0) {
-		if ((f1_type == COB_TYPE_NUMERIC_PACKED
-		  && f2_type == COB_TYPE_NUMERIC_DISPLAY)
-		 || (f1_type == COB_TYPE_NUMERIC_DISPLAY
-		  && f2_type == COB_TYPE_NUMERIC_PACKED)) {
-			return cob_cmp_packed_display (f1, f1_type, f2, f2_type);
-		}
+	/* COMP-3/COMP-6 vs DISPLAY: compare by direct digit extraction,
+	   avoiding GMP; handles both positive and negative scales */
+	if ((f1_type == COB_TYPE_NUMERIC_PACKED
+	  && f2_type == COB_TYPE_NUMERIC_DISPLAY)
+	 || (f1_type == COB_TYPE_NUMERIC_DISPLAY
+	  && f2_type == COB_TYPE_NUMERIC_PACKED)) {
+		return cob_cmp_packed_display (f1, f1_type, f2, f2_type);
 	}
 
 	/* Fallback: internal decimal compare (most expensive) */

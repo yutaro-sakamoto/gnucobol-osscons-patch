@@ -2296,10 +2296,15 @@ cob_packed_get_int (cob_field *field)
 	register int 	val;
 	register unsigned char	*d = field->data;
 	const unsigned char	*d_end = d + field->size - 1;
+	const short	scale = COB_FIELD_SCALE (field);
 
 	if (COB_FIELD_NO_SIGN_NIBBLE (field)) {
-		/* Unpack COMP-6 to integer */
-		const size_t	offset = COB_FIELD_DIGITS (field) % 2;
+		/* Unpack COMP-6 to integer;
+		   for negative scale only (digits + scale) digits are stored */
+		const int	stored_digits = (scale < 0)
+					? COB_FIELD_DIGITS (field) + scale
+					: COB_FIELD_DIGITS (field);
+		const size_t	offset = stored_digits % 2;
 		if (offset == 1) {
 			val = *d++ & 0x0F;
 		} else {
@@ -2316,8 +2321,12 @@ cob_packed_get_int (cob_field *field)
 			val = val * 100 + pack_to_bin[*d++];
 		}
 	} else {
-		/* Unpack PACKED-DECIMAL / COMP-3 to integer */
-		const size_t	offset = 1 - COB_FIELD_DIGITS (field) % 2;
+		/* Unpack PACKED-DECIMAL / COMP-3 to integer;
+		   for negative scale only (digits + scale) digits are stored */
+		const int	stored_digits = (scale < 0)
+					? COB_FIELD_DIGITS (field) + scale
+					: COB_FIELD_DIGITS (field);
+		const size_t	offset = 1 - stored_digits % 2;
 		if (offset == 1) {
 			val = *d++ & 0x0F;
 		} else {
@@ -2351,8 +2360,12 @@ packed_get_long_long (cob_field *field)
 	const unsigned char	*d_end = d + field->size - 1;
 
 	if (COB_FIELD_NO_SIGN_NIBBLE (field)) {
-		/* Unpack COMP-6 to integer */
-		const size_t	offset = COB_FIELD_DIGITS (field) % 2;
+		/* Unpack COMP-6 to integer;
+		   for negative scale only (digits + scale) digits are stored */
+		const int	stored_digits = (scale < 0)
+					? COB_FIELD_DIGITS (field) + scale
+					: COB_FIELD_DIGITS (field);
+		const size_t	offset = stored_digits % 2;
 		if (offset == 1) {
 			val = *d++ & 0x0F;
 		} else {
@@ -2369,8 +2382,12 @@ packed_get_long_long (cob_field *field)
 			val = val * 100 + pack_to_bin[*d++];
 		}
 	} else {
-		/* Unpack PACKED-DECIMAL / COMP-3 to integer */
-		const size_t	offset = 1 - COB_FIELD_DIGITS (field) % 2;
+		/* Unpack PACKED-DECIMAL / COMP-3 to integer;
+		   for negative scale only (digits + scale) digits are stored */
+		const int	stored_digits = (scale < 0)
+					? COB_FIELD_DIGITS (field) + scale
+					: COB_FIELD_DIGITS (field);
+		const size_t	offset = 1 - stored_digits % 2;
 		if (offset == 1) {
 			val = *d++ & 0x0F;
 		} else {

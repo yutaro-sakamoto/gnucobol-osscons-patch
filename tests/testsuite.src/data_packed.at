@@ -1429,6 +1429,98 @@ AT_CHECK([$COBCRUN_DIRECT ./progalt], [0], [], [])
 AT_CLEANUP
 
 
+AT_SETUP([COMP-3 negative scale comparison])
+AT_KEYWORDS([PACKED-DECIMAL COMP-3])
+
+AT_DATA([prog.cob], [
+       IDENTIFICATION   DIVISION.
+       PROGRAM-ID.      prog.
+       DATA             DIVISION.
+       WORKING-STORAGE  SECTION.
+      * COMP-3 vs COMP-3 (same negative scale)
+       01  P3A          PIC  9(3)PPP COMP-3 VALUE 123000.
+       01  P3B          PIC  9(3)PPP COMP-3 VALUE 124000.
+       01  P3C          PIC  9(3)PPP COMP-3 VALUE 123000.
+       01  P3Z          PIC  9(3)PPP COMP-3 VALUE 0.
+      * COMP-3 vs COMP-3 (neg-scale vs scale 0)
+       01  P6A          PIC  9(6) COMP-3 VALUE 123000.
+       01  P6B          PIC  9(6) COMP-3 VALUE 124000.
+       01  P6Z          PIC  9(6) COMP-3 VALUE 0.
+      * different negative scales
+       01  P3PP         PIC  9(3)PP  COMP-3 VALUE 12300.
+       01  P3PPP        PIC  9(3)PPP COMP-3 VALUE 12000.
+       01  P5A          PIC  9(5)    COMP-3 VALUE 12300.
+       01  P5B          PIC  9(5)    COMP-3 VALUE 12000.
+      * signed negative scale
+       01  SP3A         PIC S9(3)PPP COMP-3 VALUE 123000.
+       01  SP3N         PIC S9(3)PPP COMP-3 VALUE -123000.
+       01  SP3NB        PIC S9(3)PPP COMP-3 VALUE -124000.
+       01  SP6N         PIC S9(6)    COMP-3 VALUE -123000.
+      * 19+ digit negative scale
+       01  PL-A         PIC  9(19)PP COMP-3
+                        VALUE 123456789012345678900.
+       01  PL-B         PIC  9(21)   COMP-3
+                        VALUE 123456789012345678900.
+       01  PL-C         PIC  9(19)PP COMP-3
+                        VALUE 123456789012345679000.
+      * COMP-3 vs DISPLAY (negative scale)
+       01  D6A          PIC  9(6) VALUE 123000.
+       01  D6B          PIC  9(6) VALUE 124000.
+       01  D6Z          PIC  9(6) VALUE 0.
+       01  SD6N         PIC S9(6) VALUE -123000.
+       01  DP3A         PIC  9(3)PPP VALUE 123000.
+       01  DP3N         PIC S9(3)PPP VALUE -123000.
+       PROCEDURE        DIVISION.
+       MAIN.
+
+      * COMP-3 vs COMP-3, same neg-scale
+           IF P3A <> P3C DISPLAY "ns1: eq fail".
+           IF P3A >= P3B DISPLAY "ns1: lt fail".
+           IF P3B <= P3A DISPLAY "ns1: gt fail".
+           IF P3A <> P6A DISPLAY "ns1: eq cross fail".
+           IF P3Z <> P6Z DISPLAY "ns1: zero eq fail".
+           IF P3A <= P3Z DISPLAY "ns1: nonzero>zero fail".
+
+      * different negative scales
+           IF P3PP <> P5A DISPLAY "ns2: diff negsc eq fail".
+           IF P3PPP <> P5B DISPLAY "ns2: diff negsc eq2 fail".
+           IF P3PP <= P3PPP DISPLAY "ns2: 12300>12000 fail".
+
+      * signed negative scale
+           IF SP3A <= SP3N DISPLAY "ns3: pos>neg fail".
+           IF SP3N >= SP3A DISPLAY "ns3: neg<pos fail".
+           IF SP3N <= SP3NB DISPLAY "ns3: -123000>-124000 fail".
+           IF SP3N <> SP6N DISPLAY "ns3: neg eq fail".
+
+      * 19+ digit negative scale
+           IF PL-A <> PL-B DISPLAY "ns4: 19digit eq fail".
+           IF PL-C <= PL-B DISPLAY "ns4: 19digit gt fail".
+
+      * COMP-3(neg-scale) vs DISPLAY
+           IF P3A <> D6A DISPLAY "ns5: pack-disp eq fail".
+           IF P3B <= D6A DISPLAY "ns5: 124000>123000 fail".
+           IF P3A >= D6B DISPLAY "ns5: 123000<124000 fail".
+           IF P3Z <> D6Z DISPLAY "ns5: zero eq fail".
+           IF SP3N <> SD6N DISPLAY "ns5: neg eq fail".
+           IF SP3A <= SD6N DISPLAY "ns5: pos>neg fail".
+
+      * DISPLAY(neg-scale) vs COMP-3
+           IF DP3A <> P6A DISPLAY "ns6: disp-pack eq fail".
+           IF DP3N <> SP6N DISPLAY "ns6: disp-pack neg eq fail".
+
+           GOBACK.
+])
+
+AT_CHECK([$COMPILE prog.cob], [0], [], [])
+AT_CHECK([$COBCRUN_DIRECT ./prog], [0], [], [])
+
+AT_CHECK([$COMPILE -fno-fast-compare -C -o progalt.c prog.cob], [0], [], [])
+AT_CHECK([$COMPILE progalt.c], [0], [], [])
+AT_CHECK([$COBCRUN_DIRECT ./progalt], [0], [], [])
+
+AT_CLEANUP
+
+
 AT_SETUP([PACKED-DECIMAL numeric test (1)])
 AT_KEYWORDS([PACKED-DECIMAL COMP-3])
 

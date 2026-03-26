@@ -1888,46 +1888,47 @@ at_help_all="1;used_binaries.at:27;compiler help and information;runmisc cobc;
 1271;data_packed.at:1063;PACKED-DECIMAL arithmetic;packed-decimal comp-3;
 1272;data_packed.at:1187;PACKED-DECIMAL comparison;packed-decimal comp-3;
 1273;data_packed.at:1269;COMP-3 vs DISPLAY comparison (19+ digits);packed-decimal comp-3;
-1274;data_packed.at:1432;PACKED-DECIMAL numeric test (1);packed-decimal comp-3;
-1275;data_packed.at:1496;PACKED-DECIMAL numeric test (2);packed-decimal comp-3;
-1276;data_packed.at:1562;COMP-6 used with DISPLAY;packed-decimal comp-3;
-1277;data_packed.at:1595;COMP-6 used with MOVE;packed-decimal comp-3;
-1278;data_packed.at:1637;COMP-6 arithmetic;packed-decimal comp-3;
-1279;data_packed.at:1726;COMP-6 numeric;packed-decimal comp-3;
-1280;data_packed.at:1772;COMP-6 comparison;packed-decimal comp-3;
-1281;data_packed.at:1834;COMP-3 vs. COMP-6 - BCD comparison;packed-decimal;
-1282;data_packed.at:2134;PPP COMP-3;packed-decimal fundamental move display add subtract multiply divide;
-1283;data_packed.at:2246;PPP COMP-6;packed-decimal fundamental move display add subtract multiply divide;
-1284;data_packed.at:2337;arithmetic truncation with USAGE PACKED-DECIMAL;fundamental compute comp-3;
-1285;data_packed.at:2399;MOVE between several BCD fields;fundamental comp-3 comp-6 packed-decimal;
-1286;data_packed.at:12489;BCD ADD and SUBTRACT w/o SIZE ERROR;fundamental arithmetic comp-3 comp-6 packed-decimal;
-1287;data_packed.at:28909;BCD ADD and SUBTRACT, all ROUNDED MODEs;fundamental arithmetic subtract mode comp-3 comp-6 packed-decimal away-from-zero nearest-away-from-zero nearest-even nearest-toward-zero toward-greater toward-lesser prohibited truncation;
-1288;data_pointer.at:21;POINTER: display;pointer 64bit;
-1289;i18n_sjis_pic-n.at:22;PIC N Value clause;;
-1290;i18n_sjis_pic-n.at:40;PIC N Move;;
-1291;i18n_sjis_pic-n.at:59;PIC N Move with trunc;;
-1292;i18n_sjis_pic-n.at:82;PIC N Move with padding by full-width SPC;;
-1293;i18n_sjis_pic-n.at:101;PIC N Move with justify;;
-1294;i18n_sjis_pic-n.at:120;PIC N EDITED w/ VALUE;;
-1295;i18n_sjis_pic-n.at:138;INITIALIZE PIC N EDITED;;
-1296;i18n_sjis_pic-n.at:158;INITIALIZE PIC N EDITED TO VALUE;;
-1297;i18n_sjis_pic-n.at:178;PIC N Move to NATIONAL EDITED;;
-1298;i18n_sjis_pic-n.at:197;PIC N Move with half-width alnum conv.;;
-1299;i18n_sjis_pic-n.at:216;PIC N Move with half-width kana conv.;;
-1300;i18n_sjis_pic-n.at:236;PIC N Ref mod(n:);;
-1301;i18n_sjis_pic-n.at:255;PIC N Ref mod(n:m);;
-1302;i18n_sjis_pic-n.at:274;PIC N STRING by size;;
-1303;i18n_sjis_pic-n.at:297;PIC N STRING with delimiter (causes warn);;
-1304;i18n_sjis_pic-n.at:320;PIC N STRING with NATIONAL delimiter;;
-1305;i18n_sjis_pic-n.at:343;PIC N STRING with pointer;;
-1306;i18n_sjis_pic-n.at:367;PIC N INSPECT REPLACING;;
-1307;i18n_sjis_pic-n.at:386;PIC N INSPECT REPLACING by ZERO;;
-1308;i18n_sjis_pic-n.at:405;PIC N INSPECT REPLACING by NATIONAL ZERO;;
-1309;i18n_sjis_pic-n.at:424;PIC N INSPECT TALLYING;;
-1310;i18n_sjis_pic-n.at:444;PIC N Move with half-width dakuten kana.;;
-1311;i18n_sjis_pic-n.at:463;PIC N Move with half-width han-dakuten kana.;;
-1312;i18n_sjis_pic-n.at:482;INITIALIZE PIC N.;;
-1313;i18n_sjis_pic-n.at:501;PIC N Move with NUMERIC items.;;
+1274;data_packed.at:1432;COMP-3 negative scale comparison;packed-decimal comp-3;
+1275;data_packed.at:1524;PACKED-DECIMAL numeric test (1);packed-decimal comp-3;
+1276;data_packed.at:1588;PACKED-DECIMAL numeric test (2);packed-decimal comp-3;
+1277;data_packed.at:1654;COMP-6 used with DISPLAY;packed-decimal comp-3;
+1278;data_packed.at:1687;COMP-6 used with MOVE;packed-decimal comp-3;
+1279;data_packed.at:1729;COMP-6 arithmetic;packed-decimal comp-3;
+1280;data_packed.at:1818;COMP-6 numeric;packed-decimal comp-3;
+1281;data_packed.at:1864;COMP-6 comparison;packed-decimal comp-3;
+1282;data_packed.at:1926;COMP-3 vs. COMP-6 - BCD comparison;packed-decimal;
+1283;data_packed.at:2226;PPP COMP-3;packed-decimal fundamental move display add subtract multiply divide;
+1284;data_packed.at:2338;PPP COMP-6;packed-decimal fundamental move display add subtract multiply divide;
+1285;data_packed.at:2429;arithmetic truncation with USAGE PACKED-DECIMAL;fundamental compute comp-3;
+1286;data_packed.at:2491;MOVE between several BCD fields;fundamental comp-3 comp-6 packed-decimal;
+1287;data_packed.at:12581;BCD ADD and SUBTRACT w/o SIZE ERROR;fundamental arithmetic comp-3 comp-6 packed-decimal;
+1288;data_packed.at:29001;BCD ADD and SUBTRACT, all ROUNDED MODEs;fundamental arithmetic subtract mode comp-3 comp-6 packed-decimal away-from-zero nearest-away-from-zero nearest-even nearest-toward-zero toward-greater toward-lesser prohibited truncation;
+1289;data_pointer.at:21;POINTER: display;pointer 64bit;
+1290;i18n_sjis_pic-n.at:22;PIC N Value clause;;
+1291;i18n_sjis_pic-n.at:40;PIC N Move;;
+1292;i18n_sjis_pic-n.at:59;PIC N Move with trunc;;
+1293;i18n_sjis_pic-n.at:82;PIC N Move with padding by full-width SPC;;
+1294;i18n_sjis_pic-n.at:101;PIC N Move with justify;;
+1295;i18n_sjis_pic-n.at:120;PIC N EDITED w/ VALUE;;
+1296;i18n_sjis_pic-n.at:138;INITIALIZE PIC N EDITED;;
+1297;i18n_sjis_pic-n.at:158;INITIALIZE PIC N EDITED TO VALUE;;
+1298;i18n_sjis_pic-n.at:178;PIC N Move to NATIONAL EDITED;;
+1299;i18n_sjis_pic-n.at:197;PIC N Move with half-width alnum conv.;;
+1300;i18n_sjis_pic-n.at:216;PIC N Move with half-width kana conv.;;
+1301;i18n_sjis_pic-n.at:236;PIC N Ref mod(n:);;
+1302;i18n_sjis_pic-n.at:255;PIC N Ref mod(n:m);;
+1303;i18n_sjis_pic-n.at:274;PIC N STRING by size;;
+1304;i18n_sjis_pic-n.at:297;PIC N STRING with delimiter (causes warn);;
+1305;i18n_sjis_pic-n.at:320;PIC N STRING with NATIONAL delimiter;;
+1306;i18n_sjis_pic-n.at:343;PIC N STRING with pointer;;
+1307;i18n_sjis_pic-n.at:367;PIC N INSPECT REPLACING;;
+1308;i18n_sjis_pic-n.at:386;PIC N INSPECT REPLACING by ZERO;;
+1309;i18n_sjis_pic-n.at:405;PIC N INSPECT REPLACING by NATIONAL ZERO;;
+1310;i18n_sjis_pic-n.at:424;PIC N INSPECT TALLYING;;
+1311;i18n_sjis_pic-n.at:444;PIC N Move with half-width dakuten kana.;;
+1312;i18n_sjis_pic-n.at:463;PIC N Move with half-width han-dakuten kana.;;
+1313;i18n_sjis_pic-n.at:482;INITIALIZE PIC N.;;
+1314;i18n_sjis_pic-n.at:501;PIC N Move with NUMERIC items.;;
 "
 # List of the all the test groups.
 at_groups_all=`printf "%s\n" "$at_help_all" | sed 's/;.*//'`
@@ -1941,7 +1942,7 @@ at_fn_validate_ranges ()
   for at_grp
   do
     eval at_value=\$$at_grp
-    if test $at_value -lt 1 || test $at_value -gt 1313; then
+    if test $at_value -lt 1 || test $at_value -gt 1314; then
       printf "%s\n" "invalid test group: $at_value" >&2
       exit 1
     fi
@@ -2322,7 +2323,7 @@ at_banner_text_4="Run tests"
 # Category starts at test group 1237.
 at_banner_text_5="Data Representation"
 # Banner 6. testsuite.at:86
-# Category starts at test group 1289.
+# Category starts at test group 1290.
 at_banner_text_6="NATIONAL Support"
 
 # Take any -C into account.
@@ -183184,10 +183185,173 @@ read at_status <"$at_status_file"
 #AT_STOP_1273
 #AT_START_1274
 at_fn_group_banner 1274 'data_packed.at:1432' \
-  "PACKED-DECIMAL numeric test (1)" "                " 5
+  "COMP-3 negative scale comparison" "               " 5
 at_xfail=no
 (
   printf "%s\n" "1274. $at_setup_line: testing $at_desc ..."
+  $at_traceon
+
+
+
+cat >prog.cob <<'_ATEOF'
+
+       IDENTIFICATION   DIVISION.
+       PROGRAM-ID.      prog.
+       DATA             DIVISION.
+       WORKING-STORAGE  SECTION.
+      * COMP-3 vs COMP-3 (same negative scale)
+       01  P3A          PIC  9(3)PPP COMP-3 VALUE 123000.
+       01  P3B          PIC  9(3)PPP COMP-3 VALUE 124000.
+       01  P3C          PIC  9(3)PPP COMP-3 VALUE 123000.
+       01  P3Z          PIC  9(3)PPP COMP-3 VALUE 0.
+      * COMP-3 vs COMP-3 (neg-scale vs scale 0)
+       01  P6A          PIC  9(6) COMP-3 VALUE 123000.
+       01  P6B          PIC  9(6) COMP-3 VALUE 124000.
+       01  P6Z          PIC  9(6) COMP-3 VALUE 0.
+      * different negative scales
+       01  P3PP         PIC  9(3)PP  COMP-3 VALUE 12300.
+       01  P3PPP        PIC  9(3)PPP COMP-3 VALUE 12000.
+       01  P5A          PIC  9(5)    COMP-3 VALUE 12300.
+       01  P5B          PIC  9(5)    COMP-3 VALUE 12000.
+      * signed negative scale
+       01  SP3A         PIC S9(3)PPP COMP-3 VALUE 123000.
+       01  SP3N         PIC S9(3)PPP COMP-3 VALUE -123000.
+       01  SP3NB        PIC S9(3)PPP COMP-3 VALUE -124000.
+       01  SP6N         PIC S9(6)    COMP-3 VALUE -123000.
+      * 19+ digit negative scale
+       01  PL-A         PIC  9(19)PP COMP-3
+                        VALUE 123456789012345678900.
+       01  PL-B         PIC  9(21)   COMP-3
+                        VALUE 123456789012345678900.
+       01  PL-C         PIC  9(19)PP COMP-3
+                        VALUE 123456789012345679000.
+      * COMP-3 vs DISPLAY (negative scale)
+       01  D6A          PIC  9(6) VALUE 123000.
+       01  D6B          PIC  9(6) VALUE 124000.
+       01  D6Z          PIC  9(6) VALUE 0.
+       01  SD6N         PIC S9(6) VALUE -123000.
+       01  DP3A         PIC  9(3)PPP VALUE 123000.
+       01  DP3N         PIC S9(3)PPP VALUE -123000.
+       PROCEDURE        DIVISION.
+       MAIN.
+
+      * COMP-3 vs COMP-3, same neg-scale
+           IF P3A <> P3C DISPLAY "ns1: eq fail".
+           IF P3A >= P3B DISPLAY "ns1: lt fail".
+           IF P3B <= P3A DISPLAY "ns1: gt fail".
+           IF P3A <> P6A DISPLAY "ns1: eq cross fail".
+           IF P3Z <> P6Z DISPLAY "ns1: zero eq fail".
+           IF P3A <= P3Z DISPLAY "ns1: nonzero>zero fail".
+
+      * different negative scales
+           IF P3PP <> P5A DISPLAY "ns2: diff negsc eq fail".
+           IF P3PPP <> P5B DISPLAY "ns2: diff negsc eq2 fail".
+           IF P3PP <= P3PPP DISPLAY "ns2: 12300>12000 fail".
+
+      * signed negative scale
+           IF SP3A <= SP3N DISPLAY "ns3: pos>neg fail".
+           IF SP3N >= SP3A DISPLAY "ns3: neg<pos fail".
+           IF SP3N <= SP3NB DISPLAY "ns3: -123000>-124000 fail".
+           IF SP3N <> SP6N DISPLAY "ns3: neg eq fail".
+
+      * 19+ digit negative scale
+           IF PL-A <> PL-B DISPLAY "ns4: 19digit eq fail".
+           IF PL-C <= PL-B DISPLAY "ns4: 19digit gt fail".
+
+      * COMP-3(neg-scale) vs DISPLAY
+           IF P3A <> D6A DISPLAY "ns5: pack-disp eq fail".
+           IF P3B <= D6A DISPLAY "ns5: 124000>123000 fail".
+           IF P3A >= D6B DISPLAY "ns5: 123000<124000 fail".
+           IF P3Z <> D6Z DISPLAY "ns5: zero eq fail".
+           IF SP3N <> SD6N DISPLAY "ns5: neg eq fail".
+           IF SP3A <= SD6N DISPLAY "ns5: pos>neg fail".
+
+      * DISPLAY(neg-scale) vs COMP-3
+           IF DP3A <> P6A DISPLAY "ns6: disp-pack eq fail".
+           IF DP3N <> SP6N DISPLAY "ns6: disp-pack neg eq fail".
+
+           GOBACK.
+_ATEOF
+
+
+{ set +x
+printf "%s\n" "$at_srcdir/data_packed.at:1514: \$COMPILE prog.cob"
+at_fn_check_prepare_dynamic "$COMPILE prog.cob" "data_packed.at:1514"
+( $at_check_trace; $COMPILE prog.cob
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1514"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/data_packed.at:1515: \$COBCRUN_DIRECT ./prog"
+at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:1515"
+( $at_check_trace; $COBCRUN_DIRECT ./prog
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1515"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+
+{ set +x
+printf "%s\n" "$at_srcdir/data_packed.at:1517: \$COMPILE -fno-fast-compare -C -o progalt.c prog.cob"
+at_fn_check_prepare_dynamic "$COMPILE -fno-fast-compare -C -o progalt.c prog.cob" "data_packed.at:1517"
+( $at_check_trace; $COMPILE -fno-fast-compare -C -o progalt.c prog.cob
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1517"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/data_packed.at:1518: \$COMPILE progalt.c"
+at_fn_check_prepare_dynamic "$COMPILE progalt.c" "data_packed.at:1518"
+( $at_check_trace; $COMPILE progalt.c
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1518"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+{ set +x
+printf "%s\n" "$at_srcdir/data_packed.at:1519: \$COBCRUN_DIRECT ./progalt"
+at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./progalt" "data_packed.at:1519"
+( $at_check_trace; $COBCRUN_DIRECT ./progalt
+) >>"$at_stdout" 2>>"$at_stderr" 5>&-
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1519"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+
+  set +x
+  $at_times_p && times >"$at_times_file"
+) 5>&1 2>&1 7>&- | eval $at_tee_pipe
+read at_status <"$at_status_file"
+#AT_STOP_1274
+#AT_START_1275
+at_fn_group_banner 1275 'data_packed.at:1524' \
+  "PACKED-DECIMAL numeric test (1)" "                " 5
+at_xfail=no
+(
+  printf "%s\n" "1275. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -183250,28 +183414,28 @@ _ATEOF
 
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:1490: \$COMPILE prog.cob"
-at_fn_check_prepare_dynamic "$COMPILE prog.cob" "data_packed.at:1490"
+printf "%s\n" "$at_srcdir/data_packed.at:1582: \$COMPILE prog.cob"
+at_fn_check_prepare_dynamic "$COMPILE prog.cob" "data_packed.at:1582"
 ( $at_check_trace; $COMPILE prog.cob
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1490"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1582"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:1491: \$COBCRUN_DIRECT ./prog"
-at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:1491"
+printf "%s\n" "$at_srcdir/data_packed.at:1583: \$COBCRUN_DIRECT ./prog"
+at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:1583"
 ( $at_check_trace; $COBCRUN_DIRECT ./prog
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1491"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1583"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -183280,13 +183444,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1274
-#AT_START_1275
-at_fn_group_banner 1275 'data_packed.at:1496' \
+#AT_STOP_1275
+#AT_START_1276
+at_fn_group_banner 1276 'data_packed.at:1588' \
   "PACKED-DECIMAL numeric test (2)" "                " 5
 at_xfail=no
 (
-  printf "%s\n" "1275. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1276. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -183351,28 +183515,28 @@ _ATEOF
 # TODO: Check what actual option is tested here
 #       and directly use it
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:1556: \$COMPILE -std=ibm prog.cob"
-at_fn_check_prepare_dynamic "$COMPILE -std=ibm prog.cob" "data_packed.at:1556"
+printf "%s\n" "$at_srcdir/data_packed.at:1648: \$COMPILE -std=ibm prog.cob"
+at_fn_check_prepare_dynamic "$COMPILE -std=ibm prog.cob" "data_packed.at:1648"
 ( $at_check_trace; $COMPILE -std=ibm prog.cob
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1556"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1648"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:1557: \$COBCRUN_DIRECT ./prog"
-at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:1557"
+printf "%s\n" "$at_srcdir/data_packed.at:1649: \$COBCRUN_DIRECT ./prog"
+at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:1649"
 ( $at_check_trace; $COBCRUN_DIRECT ./prog
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1557"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1649"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -183381,13 +183545,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1275
-#AT_START_1276
-at_fn_group_banner 1276 'data_packed.at:1562' \
+#AT_STOP_1276
+#AT_START_1277
+at_fn_group_banner 1277 'data_packed.at:1654' \
   "COMP-6 used with DISPLAY" "                       " 5
 at_xfail=no
 (
-  printf "%s\n" "1276. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1277. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -183414,21 +183578,21 @@ _ATEOF
 
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:1584: \$COMPILE prog.cob"
-at_fn_check_prepare_dynamic "$COMPILE prog.cob" "data_packed.at:1584"
+printf "%s\n" "$at_srcdir/data_packed.at:1676: \$COMPILE prog.cob"
+at_fn_check_prepare_dynamic "$COMPILE prog.cob" "data_packed.at:1676"
 ( $at_check_trace; $COMPILE prog.cob
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1584"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1676"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:1585: \$COBCRUN_DIRECT ./prog"
-at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:1585"
+printf "%s\n" "$at_srcdir/data_packed.at:1677: \$COBCRUN_DIRECT ./prog"
+at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:1677"
 ( $at_check_trace; $COBCRUN_DIRECT ./prog
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
@@ -183440,7 +183604,7 @@ echo >>"$at_stdout"; printf "%s\n" "00
 123
 " | \
   $at_diff - "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1585"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1677"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -183449,13 +183613,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1276
-#AT_START_1277
-at_fn_group_banner 1277 'data_packed.at:1595' \
+#AT_STOP_1277
+#AT_START_1278
+at_fn_group_banner 1278 'data_packed.at:1687' \
   "COMP-6 used with MOVE" "                          " 5
 at_xfail=no
 (
-  printf "%s\n" "1277. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1278. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -183490,28 +183654,28 @@ _ATEOF
 
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:1625: \$COMPILE prog.cob"
-at_fn_check_prepare_dynamic "$COMPILE prog.cob" "data_packed.at:1625"
+printf "%s\n" "$at_srcdir/data_packed.at:1717: \$COMPILE prog.cob"
+at_fn_check_prepare_dynamic "$COMPILE prog.cob" "data_packed.at:1717"
 ( $at_check_trace; $COMPILE prog.cob
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1625"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1717"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:1626: \$COBCRUN_DIRECT ./prog"
-at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:1626"
+printf "%s\n" "$at_srcdir/data_packed.at:1718: \$COBCRUN_DIRECT ./prog"
+at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:1718"
 ( $at_check_trace; $COBCRUN_DIRECT ./prog
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1626"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1718"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -183519,41 +183683,41 @@ $at_traceon; }
 # also check "not optimized during codegen",
 # which leads to other code-paths
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:1630: \$COMPILE -fno-fast-compare -C -o progalt.c prog.cob"
-at_fn_check_prepare_dynamic "$COMPILE -fno-fast-compare -C -o progalt.c prog.cob" "data_packed.at:1630"
+printf "%s\n" "$at_srcdir/data_packed.at:1722: \$COMPILE -fno-fast-compare -C -o progalt.c prog.cob"
+at_fn_check_prepare_dynamic "$COMPILE -fno-fast-compare -C -o progalt.c prog.cob" "data_packed.at:1722"
 ( $at_check_trace; $COMPILE -fno-fast-compare -C -o progalt.c prog.cob
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1630"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1722"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:1631: \$COMPILE progalt.c"
-at_fn_check_prepare_dynamic "$COMPILE progalt.c" "data_packed.at:1631"
+printf "%s\n" "$at_srcdir/data_packed.at:1723: \$COMPILE progalt.c"
+at_fn_check_prepare_dynamic "$COMPILE progalt.c" "data_packed.at:1723"
 ( $at_check_trace; $COMPILE progalt.c
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1631"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1723"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:1632: \$COBCRUN_DIRECT ./progalt"
-at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./progalt" "data_packed.at:1632"
+printf "%s\n" "$at_srcdir/data_packed.at:1724: \$COBCRUN_DIRECT ./progalt"
+at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./progalt" "data_packed.at:1724"
 ( $at_check_trace; $COBCRUN_DIRECT ./progalt
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1632"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1724"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -183562,13 +183726,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1277
-#AT_START_1278
-at_fn_group_banner 1278 'data_packed.at:1637' \
+#AT_STOP_1278
+#AT_START_1279
+at_fn_group_banner 1279 'data_packed.at:1729' \
   "COMP-6 arithmetic" "                              " 5
 at_xfail=no
 (
-  printf "%s\n" "1278. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1279. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -183656,28 +183820,28 @@ _ATEOF
 
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:1720: \$COMPILE prog.cob"
-at_fn_check_prepare_dynamic "$COMPILE prog.cob" "data_packed.at:1720"
+printf "%s\n" "$at_srcdir/data_packed.at:1812: \$COMPILE prog.cob"
+at_fn_check_prepare_dynamic "$COMPILE prog.cob" "data_packed.at:1812"
 ( $at_check_trace; $COMPILE prog.cob
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1720"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1812"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:1721: \$COBCRUN_DIRECT ./prog"
-at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:1721"
+printf "%s\n" "$at_srcdir/data_packed.at:1813: \$COBCRUN_DIRECT ./prog"
+at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:1813"
 ( $at_check_trace; $COBCRUN_DIRECT ./prog
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1721"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1813"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -183686,13 +183850,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1278
-#AT_START_1279
-at_fn_group_banner 1279 'data_packed.at:1726' \
+#AT_STOP_1279
+#AT_START_1280
+at_fn_group_banner 1280 'data_packed.at:1818' \
   "COMP-6 numeric" "                                 " 5
 at_xfail=no
 (
-  printf "%s\n" "1279. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1280. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -183737,28 +183901,28 @@ _ATEOF
 
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:1766: \$COMPILE prog.cob"
-at_fn_check_prepare_dynamic "$COMPILE prog.cob" "data_packed.at:1766"
+printf "%s\n" "$at_srcdir/data_packed.at:1858: \$COMPILE prog.cob"
+at_fn_check_prepare_dynamic "$COMPILE prog.cob" "data_packed.at:1858"
 ( $at_check_trace; $COMPILE prog.cob
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1766"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1858"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:1767: \$COBCRUN_DIRECT ./prog"
-at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:1767"
+printf "%s\n" "$at_srcdir/data_packed.at:1859: \$COBCRUN_DIRECT ./prog"
+at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:1859"
 ( $at_check_trace; $COBCRUN_DIRECT ./prog
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1767"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1859"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -183767,13 +183931,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1279
-#AT_START_1280
-at_fn_group_banner 1280 'data_packed.at:1772' \
+#AT_STOP_1280
+#AT_START_1281
+at_fn_group_banner 1281 'data_packed.at:1864' \
   "COMP-6 comparison" "                              " 5
 at_xfail=no
 (
-  printf "%s\n" "1280. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1281. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -183828,28 +183992,28 @@ _ATEOF
 
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:1822: \$COMPILE prog.cob"
-at_fn_check_prepare_dynamic "$COMPILE prog.cob" "data_packed.at:1822"
+printf "%s\n" "$at_srcdir/data_packed.at:1914: \$COMPILE prog.cob"
+at_fn_check_prepare_dynamic "$COMPILE prog.cob" "data_packed.at:1914"
 ( $at_check_trace; $COMPILE prog.cob
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1822"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1914"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:1823: \$COBCRUN_DIRECT ./prog"
-at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:1823"
+printf "%s\n" "$at_srcdir/data_packed.at:1915: \$COBCRUN_DIRECT ./prog"
+at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:1915"
 ( $at_check_trace; $COBCRUN_DIRECT ./prog
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1823"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1915"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -183857,41 +184021,41 @@ $at_traceon; }
 # also check "not optimized during codegen",
 # which leads to other code-paths
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:1827: \$COMPILE -fno-fast-compare -C -o progalt.c prog.cob"
-at_fn_check_prepare_dynamic "$COMPILE -fno-fast-compare -C -o progalt.c prog.cob" "data_packed.at:1827"
+printf "%s\n" "$at_srcdir/data_packed.at:1919: \$COMPILE -fno-fast-compare -C -o progalt.c prog.cob"
+at_fn_check_prepare_dynamic "$COMPILE -fno-fast-compare -C -o progalt.c prog.cob" "data_packed.at:1919"
 ( $at_check_trace; $COMPILE -fno-fast-compare -C -o progalt.c prog.cob
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1827"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1919"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:1828: \$COMPILE progalt.c"
-at_fn_check_prepare_dynamic "$COMPILE progalt.c" "data_packed.at:1828"
+printf "%s\n" "$at_srcdir/data_packed.at:1920: \$COMPILE progalt.c"
+at_fn_check_prepare_dynamic "$COMPILE progalt.c" "data_packed.at:1920"
 ( $at_check_trace; $COMPILE progalt.c
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1828"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1920"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:1829: \$COBCRUN_DIRECT ./progalt"
-at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./progalt" "data_packed.at:1829"
+printf "%s\n" "$at_srcdir/data_packed.at:1921: \$COBCRUN_DIRECT ./progalt"
+at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./progalt" "data_packed.at:1921"
 ( $at_check_trace; $COBCRUN_DIRECT ./progalt
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1829"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:1921"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -183900,13 +184064,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1280
-#AT_START_1281
-at_fn_group_banner 1281 'data_packed.at:1834' \
+#AT_STOP_1281
+#AT_START_1282
+at_fn_group_banner 1282 'data_packed.at:1926' \
   "COMP-3 vs. COMP-6 - BCD comparison" "             " 5
 at_xfail=no
 (
-  printf "%s\n" "1281. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1282. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -184199,28 +184363,28 @@ _ATEOF
 
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:2122: \$COMPILE prog.cob"
-at_fn_check_prepare_dynamic "$COMPILE prog.cob" "data_packed.at:2122"
+printf "%s\n" "$at_srcdir/data_packed.at:2214: \$COMPILE prog.cob"
+at_fn_check_prepare_dynamic "$COMPILE prog.cob" "data_packed.at:2214"
 ( $at_check_trace; $COMPILE prog.cob
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:2122"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:2214"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:2123: \$COBCRUN_DIRECT ./prog"
-at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:2123"
+printf "%s\n" "$at_srcdir/data_packed.at:2215: \$COBCRUN_DIRECT ./prog"
+at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:2215"
 ( $at_check_trace; $COBCRUN_DIRECT ./prog
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:2123"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:2215"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -184228,41 +184392,41 @@ $at_traceon; }
 # also check "not optimized during codegen",
 # which leads to other code-paths
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:2127: \$COMPILE -fno-fast-compare -C -o progalt.c prog.cob"
-at_fn_check_prepare_dynamic "$COMPILE -fno-fast-compare -C -o progalt.c prog.cob" "data_packed.at:2127"
+printf "%s\n" "$at_srcdir/data_packed.at:2219: \$COMPILE -fno-fast-compare -C -o progalt.c prog.cob"
+at_fn_check_prepare_dynamic "$COMPILE -fno-fast-compare -C -o progalt.c prog.cob" "data_packed.at:2219"
 ( $at_check_trace; $COMPILE -fno-fast-compare -C -o progalt.c prog.cob
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:2127"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:2219"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:2128: \$COMPILE progalt.c"
-at_fn_check_prepare_dynamic "$COMPILE progalt.c" "data_packed.at:2128"
+printf "%s\n" "$at_srcdir/data_packed.at:2220: \$COMPILE progalt.c"
+at_fn_check_prepare_dynamic "$COMPILE progalt.c" "data_packed.at:2220"
 ( $at_check_trace; $COMPILE progalt.c
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:2128"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:2220"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:2129: \$COBCRUN_DIRECT ./progalt"
-at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./progalt" "data_packed.at:2129"
+printf "%s\n" "$at_srcdir/data_packed.at:2221: \$COBCRUN_DIRECT ./progalt"
+at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./progalt" "data_packed.at:2221"
 ( $at_check_trace; $COBCRUN_DIRECT ./progalt
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:2129"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:2221"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -184271,13 +184435,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1281
-#AT_START_1282
-at_fn_group_banner 1282 'data_packed.at:2134' \
+#AT_STOP_1282
+#AT_START_1283
+at_fn_group_banner 1283 'data_packed.at:2226' \
   "PPP COMP-3" "                                     " 5
 at_xfail=no
 (
-  printf "%s\n" "1282. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1283. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -184374,22 +184538,22 @@ _ATEOF
 
 # CHECKME: -Wno-typing because of MOVE warning
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:2226: \$COMPILE -Wno-typing prog.cob"
-at_fn_check_prepare_dynamic "$COMPILE -Wno-typing prog.cob" "data_packed.at:2226"
+printf "%s\n" "$at_srcdir/data_packed.at:2318: \$COMPILE -Wno-typing prog.cob"
+at_fn_check_prepare_dynamic "$COMPILE -Wno-typing prog.cob" "data_packed.at:2318"
 ( $at_check_trace; $COMPILE -Wno-typing prog.cob
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:2226"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:2318"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:2228: \$COBCRUN_DIRECT ./prog"
-at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:2228"
+printf "%s\n" "$at_srcdir/data_packed.at:2320: \$COBCRUN_DIRECT ./prog"
+at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:2320"
 ( $at_check_trace; $COBCRUN_DIRECT ./prog
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
@@ -184409,7 +184573,7 @@ MOVE X-1 : 193000:193000 .
 MOVE X-2 : 193000:193000 .
 " | \
   $at_diff - "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:2228"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:2320"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -184418,13 +184582,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1282
-#AT_START_1283
-at_fn_group_banner 1283 'data_packed.at:2246' \
+#AT_STOP_1283
+#AT_START_1284
+at_fn_group_banner 1284 'data_packed.at:2338' \
   "PPP COMP-6" "                                     " 5
 at_xfail=no
 (
-  printf "%s\n" "1283. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1284. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -184502,22 +184666,22 @@ _ATEOF
 
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:2319: \$COMPILE prog.cob"
-at_fn_check_prepare_dynamic "$COMPILE prog.cob" "data_packed.at:2319"
+printf "%s\n" "$at_srcdir/data_packed.at:2411: \$COMPILE prog.cob"
+at_fn_check_prepare_dynamic "$COMPILE prog.cob" "data_packed.at:2411"
 ( $at_check_trace; $COMPILE prog.cob
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:2319"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:2411"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:2321: \$COBCRUN_DIRECT ./prog"
-at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:2321"
+printf "%s\n" "$at_srcdir/data_packed.at:2413: \$COBCRUN_DIRECT ./prog"
+at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:2413"
 ( $at_check_trace; $COBCRUN_DIRECT ./prog
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
@@ -184535,7 +184699,7 @@ MOVE X-1 : 193000:193000 .
 MOVE X-2 : 193000:193000 .
 " | \
   $at_diff - "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:2321"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:2413"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -184544,13 +184708,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1283
-#AT_START_1284
-at_fn_group_banner 1284 'data_packed.at:2337' \
+#AT_STOP_1284
+#AT_START_1285
+at_fn_group_banner 1285 'data_packed.at:2429' \
   "arithmetic truncation with USAGE PACKED-DECIMAL" "" 5
 at_xfail=no
 (
-  printf "%s\n" "1284. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1285. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -184611,28 +184775,28 @@ _ATEOF
 
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:2393: \$COMPILE prog.cob"
-at_fn_check_prepare_dynamic "$COMPILE prog.cob" "data_packed.at:2393"
+printf "%s\n" "$at_srcdir/data_packed.at:2485: \$COMPILE prog.cob"
+at_fn_check_prepare_dynamic "$COMPILE prog.cob" "data_packed.at:2485"
 ( $at_check_trace; $COMPILE prog.cob
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:2393"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:2485"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:2394: \$COBCRUN_DIRECT ./prog"
-at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:2394"
+printf "%s\n" "$at_srcdir/data_packed.at:2486: \$COBCRUN_DIRECT ./prog"
+at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:2486"
 ( $at_check_trace; $COBCRUN_DIRECT ./prog
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:2394"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:2486"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -184641,13 +184805,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1284
-#AT_START_1285
-at_fn_group_banner 1285 'data_packed.at:2399' \
+#AT_STOP_1285
+#AT_START_1286
+at_fn_group_banner 1286 'data_packed.at:2491' \
   "MOVE between several BCD fields" "                " 5
 at_xfail=no
 (
-  printf "%s\n" "1285. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1286. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -189693,28 +189857,28 @@ _ATEOF
 
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:7440: \$COMPILE prog.cob"
-at_fn_check_prepare_dynamic "$COMPILE prog.cob" "data_packed.at:7440"
+printf "%s\n" "$at_srcdir/data_packed.at:7532: \$COMPILE prog.cob"
+at_fn_check_prepare_dynamic "$COMPILE prog.cob" "data_packed.at:7532"
 ( $at_check_trace; $COMPILE prog.cob
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:7440"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:7532"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:7441: \$COBCRUN_DIRECT ./prog"
-at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:7441"
+printf "%s\n" "$at_srcdir/data_packed.at:7533: \$COBCRUN_DIRECT ./prog"
+at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:7533"
 ( $at_check_trace; $COBCRUN_DIRECT ./prog
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:7441"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:7533"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -194762,28 +194926,28 @@ _ATEOF
 
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:12483: \$COMPILE prog2.cob"
-at_fn_check_prepare_dynamic "$COMPILE prog2.cob" "data_packed.at:12483"
+printf "%s\n" "$at_srcdir/data_packed.at:12575: \$COMPILE prog2.cob"
+at_fn_check_prepare_dynamic "$COMPILE prog2.cob" "data_packed.at:12575"
 ( $at_check_trace; $COMPILE prog2.cob
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:12483"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:12575"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:12484: \$COBCRUN_DIRECT ./prog2"
-at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog2" "data_packed.at:12484"
+printf "%s\n" "$at_srcdir/data_packed.at:12576: \$COBCRUN_DIRECT ./prog2"
+at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog2" "data_packed.at:12576"
 ( $at_check_trace; $COBCRUN_DIRECT ./prog2
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:12484"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:12576"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -194792,13 +194956,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1285
-#AT_START_1286
-at_fn_group_banner 1286 'data_packed.at:12489' \
+#AT_STOP_1286
+#AT_START_1287
+at_fn_group_banner 1287 'data_packed.at:12581' \
   "BCD ADD and SUBTRACT w/o SIZE ERROR" "            " 5
 at_xfail=no
 (
-  printf "%s\n" "1286. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1287. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -203008,28 +203172,28 @@ _ATEOF
 
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:20694: \$COMPILE prog.cob"
-at_fn_check_prepare_dynamic "$COMPILE prog.cob" "data_packed.at:20694"
+printf "%s\n" "$at_srcdir/data_packed.at:20786: \$COMPILE prog.cob"
+at_fn_check_prepare_dynamic "$COMPILE prog.cob" "data_packed.at:20786"
 ( $at_check_trace; $COMPILE prog.cob
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:20694"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:20786"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:20695: \$COBCRUN_DIRECT ./prog"
-at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:20695"
+printf "%s\n" "$at_srcdir/data_packed.at:20787: \$COBCRUN_DIRECT ./prog"
+at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:20787"
 ( $at_check_trace; $COBCRUN_DIRECT ./prog
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:20695"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:20787"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -211243,28 +211407,28 @@ _ATEOF
 
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:28903: \$COMPILE prog2.cob"
-at_fn_check_prepare_dynamic "$COMPILE prog2.cob" "data_packed.at:28903"
+printf "%s\n" "$at_srcdir/data_packed.at:28995: \$COMPILE prog2.cob"
+at_fn_check_prepare_dynamic "$COMPILE prog2.cob" "data_packed.at:28995"
 ( $at_check_trace; $COMPILE prog2.cob
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:28903"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:28995"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:28904: \$COBCRUN_DIRECT ./prog2"
-at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog2" "data_packed.at:28904"
+printf "%s\n" "$at_srcdir/data_packed.at:28996: \$COBCRUN_DIRECT ./prog2"
+at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog2" "data_packed.at:28996"
 ( $at_check_trace; $COBCRUN_DIRECT ./prog2
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:28904"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:28996"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -211273,13 +211437,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1286
-#AT_START_1287
-at_fn_group_banner 1287 'data_packed.at:28909' \
+#AT_STOP_1287
+#AT_START_1288
+at_fn_group_banner 1288 'data_packed.at:29001' \
   "BCD ADD and SUBTRACT, all ROUNDED MODEs" "        " 5
 at_xfail=no
 (
-  printf "%s\n" "1287. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1288. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -217328,28 +217492,28 @@ _ATEOF
 
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:34956: \$COMPILE prog.cob"
-at_fn_check_prepare_dynamic "$COMPILE prog.cob" "data_packed.at:34956"
+printf "%s\n" "$at_srcdir/data_packed.at:35048: \$COMPILE prog.cob"
+at_fn_check_prepare_dynamic "$COMPILE prog.cob" "data_packed.at:35048"
 ( $at_check_trace; $COMPILE prog.cob
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:34956"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:35048"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:34957: \$COBCRUN_DIRECT ./prog"
-at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:34957"
+printf "%s\n" "$at_srcdir/data_packed.at:35049: \$COBCRUN_DIRECT ./prog"
+at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog" "data_packed.at:35049"
 ( $at_check_trace; $COBCRUN_DIRECT ./prog
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:34957"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:35049"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -223401,28 +223565,28 @@ _ATEOF
 
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:41003: \$COMPILE prog2.cob"
-at_fn_check_prepare_dynamic "$COMPILE prog2.cob" "data_packed.at:41003"
+printf "%s\n" "$at_srcdir/data_packed.at:41095: \$COMPILE prog2.cob"
+at_fn_check_prepare_dynamic "$COMPILE prog2.cob" "data_packed.at:41095"
 ( $at_check_trace; $COMPILE prog2.cob
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:41003"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:41095"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
 { set +x
-printf "%s\n" "$at_srcdir/data_packed.at:41004: \$COBCRUN_DIRECT ./prog2"
-at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog2" "data_packed.at:41004"
+printf "%s\n" "$at_srcdir/data_packed.at:41096: \$COBCRUN_DIRECT ./prog2"
+at_fn_check_prepare_dynamic "$COBCRUN_DIRECT ./prog2" "data_packed.at:41096"
 ( $at_check_trace; $COBCRUN_DIRECT ./prog2
 ) >>"$at_stdout" 2>>"$at_stderr" 5>&-
 at_status=$? at_failed=false
 $at_check_filter
 at_fn_diff_devnull "$at_stderr" || at_failed=:
 at_fn_diff_devnull "$at_stdout" || at_failed=:
-at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:41004"
+at_fn_check_status 0 $at_status "$at_srcdir/data_packed.at:41096"
 $at_failed && at_fn_log_failure
 $at_traceon; }
 
@@ -223431,13 +223595,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1287
-#AT_START_1288
-at_fn_group_banner 1288 'data_pointer.at:21' \
+#AT_STOP_1288
+#AT_START_1289
+at_fn_group_banner 1289 'data_pointer.at:21' \
   "POINTER: display" "                               " 5
 at_xfail=no
 (
-  printf "%s\n" "1288. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1289. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -223537,13 +223701,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1288
-#AT_START_1289
-at_fn_group_banner 1289 'i18n_sjis_pic-n.at:22' \
+#AT_STOP_1289
+#AT_START_1290
+at_fn_group_banner 1290 'i18n_sjis_pic-n.at:22' \
   "PIC N Value clause" "                             " 6
 at_xfail=no
 (
-  printf "%s\n" "1289. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1290. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -223592,13 +223756,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1289
-#AT_START_1290
-at_fn_group_banner 1290 'i18n_sjis_pic-n.at:40' \
+#AT_STOP_1290
+#AT_START_1291
+at_fn_group_banner 1291 'i18n_sjis_pic-n.at:40' \
   "PIC N Move" "                                     " 6
 at_xfail=no
 (
-  printf "%s\n" "1290. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1291. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -223648,13 +223812,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1290
-#AT_START_1291
-at_fn_group_banner 1291 'i18n_sjis_pic-n.at:59' \
+#AT_STOP_1291
+#AT_START_1292
+at_fn_group_banner 1292 'i18n_sjis_pic-n.at:59' \
   "PIC N Move with trunc" "                          " 6
 at_xfail=no
 (
-  printf "%s\n" "1291. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1292. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -223708,13 +223872,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1291
-#AT_START_1292
-at_fn_group_banner 1292 'i18n_sjis_pic-n.at:82' \
+#AT_STOP_1292
+#AT_START_1293
+at_fn_group_banner 1293 'i18n_sjis_pic-n.at:82' \
   "PIC N Move with padding by full-width SPC" "      " 6
 at_xfail=no
 (
-  printf "%s\n" "1292. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1293. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -223764,13 +223928,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1292
-#AT_START_1293
-at_fn_group_banner 1293 'i18n_sjis_pic-n.at:101' \
+#AT_STOP_1293
+#AT_START_1294
+at_fn_group_banner 1294 'i18n_sjis_pic-n.at:101' \
   "PIC N Move with justify" "                        " 6
 at_xfail=no
 (
-  printf "%s\n" "1293. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1294. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -223820,13 +223984,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1293
-#AT_START_1294
-at_fn_group_banner 1294 'i18n_sjis_pic-n.at:120' \
+#AT_STOP_1294
+#AT_START_1295
+at_fn_group_banner 1295 'i18n_sjis_pic-n.at:120' \
   "PIC N EDITED w/ VALUE" "                          " 6
 at_xfail=no
 (
-  printf "%s\n" "1294. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1295. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -223875,13 +224039,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1294
-#AT_START_1295
-at_fn_group_banner 1295 'i18n_sjis_pic-n.at:138' \
+#AT_STOP_1295
+#AT_START_1296
+at_fn_group_banner 1296 'i18n_sjis_pic-n.at:138' \
   "INITIALIZE PIC N EDITED" "                        " 6
 at_xfail=no
 (
-  printf "%s\n" "1295. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1296. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -223932,13 +224096,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1295
-#AT_START_1296
-at_fn_group_banner 1296 'i18n_sjis_pic-n.at:158' \
+#AT_STOP_1296
+#AT_START_1297
+at_fn_group_banner 1297 'i18n_sjis_pic-n.at:158' \
   "INITIALIZE PIC N EDITED TO VALUE" "               " 6
 at_xfail=no
 (
-  printf "%s\n" "1296. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1297. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -223989,13 +224153,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1296
-#AT_START_1297
-at_fn_group_banner 1297 'i18n_sjis_pic-n.at:178' \
+#AT_STOP_1297
+#AT_START_1298
+at_fn_group_banner 1298 'i18n_sjis_pic-n.at:178' \
   "PIC N Move to NATIONAL EDITED" "                  " 6
 at_xfail=no
 (
-  printf "%s\n" "1297. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1298. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -224045,13 +224209,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1297
-#AT_START_1298
-at_fn_group_banner 1298 'i18n_sjis_pic-n.at:197' \
+#AT_STOP_1298
+#AT_START_1299
+at_fn_group_banner 1299 'i18n_sjis_pic-n.at:197' \
   "PIC N Move with half-width alnum conv." "         " 6
 at_xfail=no
 (
-  printf "%s\n" "1298. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1299. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -224101,13 +224265,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1298
-#AT_START_1299
-at_fn_group_banner 1299 'i18n_sjis_pic-n.at:216' \
+#AT_STOP_1299
+#AT_START_1300
+at_fn_group_banner 1300 'i18n_sjis_pic-n.at:216' \
   "PIC N Move with half-width kana conv." "          " 6
 at_xfail=no
 (
-  printf "%s\n" "1299. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1300. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -224158,13 +224322,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1299
-#AT_START_1300
-at_fn_group_banner 1300 'i18n_sjis_pic-n.at:236' \
+#AT_STOP_1300
+#AT_START_1301
+at_fn_group_banner 1301 'i18n_sjis_pic-n.at:236' \
   "PIC N Ref mod(n:)" "                              " 6
 at_xfail=no
 (
-  printf "%s\n" "1300. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1301. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -224214,13 +224378,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1300
-#AT_START_1301
-at_fn_group_banner 1301 'i18n_sjis_pic-n.at:255' \
+#AT_STOP_1301
+#AT_START_1302
+at_fn_group_banner 1302 'i18n_sjis_pic-n.at:255' \
   "PIC N Ref mod(n:m)" "                             " 6
 at_xfail=no
 (
-  printf "%s\n" "1301. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1302. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -224270,13 +224434,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1301
-#AT_START_1302
-at_fn_group_banner 1302 'i18n_sjis_pic-n.at:274' \
+#AT_STOP_1302
+#AT_START_1303
+at_fn_group_banner 1303 'i18n_sjis_pic-n.at:274' \
   "PIC N STRING by size" "                           " 6
 at_xfail=no
 (
-  printf "%s\n" "1302. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1303. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -224330,13 +224494,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1302
-#AT_START_1303
-at_fn_group_banner 1303 'i18n_sjis_pic-n.at:297' \
+#AT_STOP_1303
+#AT_START_1304
+at_fn_group_banner 1304 'i18n_sjis_pic-n.at:297' \
   "PIC N STRING with delimiter (causes warn)" "      " 6
 at_xfail=no
 (
-  printf "%s\n" "1303. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1304. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -224390,13 +224554,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1303
-#AT_START_1304
-at_fn_group_banner 1304 'i18n_sjis_pic-n.at:320' \
+#AT_STOP_1304
+#AT_START_1305
+at_fn_group_banner 1305 'i18n_sjis_pic-n.at:320' \
   "PIC N STRING with NATIONAL delimiter" "           " 6
 at_xfail=no
 (
-  printf "%s\n" "1304. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1305. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -224450,13 +224614,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1304
-#AT_START_1305
-at_fn_group_banner 1305 'i18n_sjis_pic-n.at:343' \
+#AT_STOP_1305
+#AT_START_1306
+at_fn_group_banner 1306 'i18n_sjis_pic-n.at:343' \
   "PIC N STRING with pointer" "                      " 6
 at_xfail=no
 (
-  printf "%s\n" "1305. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1306. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -224511,13 +224675,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1305
-#AT_START_1306
-at_fn_group_banner 1306 'i18n_sjis_pic-n.at:367' \
+#AT_STOP_1306
+#AT_START_1307
+at_fn_group_banner 1307 'i18n_sjis_pic-n.at:367' \
   "PIC N INSPECT REPLACING" "                        " 6
 at_xfail=no
 (
-  printf "%s\n" "1306. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1307. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -224567,13 +224731,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1306
-#AT_START_1307
-at_fn_group_banner 1307 'i18n_sjis_pic-n.at:386' \
+#AT_STOP_1307
+#AT_START_1308
+at_fn_group_banner 1308 'i18n_sjis_pic-n.at:386' \
   "PIC N INSPECT REPLACING by ZERO" "                " 6
 at_xfail=no
 (
-  printf "%s\n" "1307. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1308. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -224623,13 +224787,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1307
-#AT_START_1308
-at_fn_group_banner 1308 'i18n_sjis_pic-n.at:405' \
+#AT_STOP_1308
+#AT_START_1309
+at_fn_group_banner 1309 'i18n_sjis_pic-n.at:405' \
   "PIC N INSPECT REPLACING by NATIONAL ZERO" "       " 6
 at_xfail=no
 (
-  printf "%s\n" "1308. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1309. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -224679,13 +224843,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1308
-#AT_START_1309
-at_fn_group_banner 1309 'i18n_sjis_pic-n.at:424' \
+#AT_STOP_1309
+#AT_START_1310
+at_fn_group_banner 1310 'i18n_sjis_pic-n.at:424' \
   "PIC N INSPECT TALLYING" "                         " 6
 at_xfail=no
 (
-  printf "%s\n" "1309. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1310. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -224736,13 +224900,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1309
-#AT_START_1310
-at_fn_group_banner 1310 'i18n_sjis_pic-n.at:444' \
+#AT_STOP_1310
+#AT_START_1311
+at_fn_group_banner 1311 'i18n_sjis_pic-n.at:444' \
   "PIC N Move with half-width dakuten kana." "       " 6
 at_xfail=no
 (
-  printf "%s\n" "1310. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1311. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -224792,13 +224956,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1310
-#AT_START_1311
-at_fn_group_banner 1311 'i18n_sjis_pic-n.at:463' \
+#AT_STOP_1311
+#AT_START_1312
+at_fn_group_banner 1312 'i18n_sjis_pic-n.at:463' \
   "PIC N Move with half-width han-dakuten kana." "   " 6
 at_xfail=no
 (
-  printf "%s\n" "1311. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1312. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -224848,13 +225012,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1311
-#AT_START_1312
-at_fn_group_banner 1312 'i18n_sjis_pic-n.at:482' \
+#AT_STOP_1312
+#AT_START_1313
+at_fn_group_banner 1313 'i18n_sjis_pic-n.at:482' \
   "INITIALIZE PIC N." "                              " 6
 at_xfail=no
 (
-  printf "%s\n" "1312. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1313. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -224904,13 +225068,13 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1312
-#AT_START_1313
-at_fn_group_banner 1313 'i18n_sjis_pic-n.at:501' \
+#AT_STOP_1313
+#AT_START_1314
+at_fn_group_banner 1314 'i18n_sjis_pic-n.at:501' \
   "PIC N Move with NUMERIC items." "                 " 6
 at_xfail=no
 (
-  printf "%s\n" "1313. $at_setup_line: testing $at_desc ..."
+  printf "%s\n" "1314. $at_setup_line: testing $at_desc ..."
   $at_traceon
 
 
@@ -224978,4 +225142,4 @@ $at_traceon; }
   $at_times_p && times >"$at_times_file"
 ) 5>&1 2>&1 7>&- | eval $at_tee_pipe
 read at_status <"$at_status_file"
-#AT_STOP_1313
+#AT_STOP_1314
