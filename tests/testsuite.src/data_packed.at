@@ -1266,6 +1266,169 @@ AT_CHECK([$COBCRUN_DIRECT ./progalt], [0], [], [])
 AT_CLEANUP
 
 
+AT_SETUP([COMP-3 vs DISPLAY comparison (19+ digits)])
+AT_KEYWORDS([PACKED-DECIMAL COMP-3])
+
+AT_DATA([prog.cob], [
+       IDENTIFICATION   DIVISION.
+       PROGRAM-ID.      prog.
+       DATA             DIVISION.
+       WORKING-STORAGE  SECTION.
+      * === 19-digit unsigned (boundary) ===
+       01  UD-19        PIC  9(19)
+                        VALUE 1234567890123456789.
+       01  UP-19        PIC  9(19) COMP-3
+                        VALUE 1234567890123456789.
+       01  UD-19-HI     PIC  9(19)
+                        VALUE 1234567890123456790.
+       01  UP-19-LO     PIC  9(19) COMP-3
+                        VALUE 1234567890123456788.
+      * === 20-digit unsigned ===
+       01  UD-20        PIC  9(20)
+                        VALUE 12345678901234567890.
+       01  UP-20        PIC  9(20) COMP-3
+                        VALUE 12345678901234567890.
+       01  UD-20-HI     PIC  9(20)
+                        VALUE 12345678901234567891.
+       01  UP-20-HI     PIC  9(20) COMP-3
+                        VALUE 12345678901234567891.
+       01  UP-20-LO     PIC  9(20) COMP-3
+                        VALUE 12345678901234567889.
+      * === 20-digit signed ===
+       01  SD-20        PIC S9(20)
+                        VALUE 12345678901234567890.
+       01  SP-20        PIC S9(20) COMP-3
+                        VALUE 12345678901234567890.
+       01  SD-N20       PIC S9(20)
+                        VALUE -12345678901234567890.
+       01  SP-N20       PIC S9(20) COMP-3
+                        VALUE -12345678901234567890.
+       01  SD-N20B      PIC S9(20)
+                        VALUE -12345678901234567891.
+       01  SP-N20B      PIC S9(20) COMP-3
+                        VALUE -12345678901234567891.
+      * === 25-digit ===
+       01  UD-25        PIC  9(25)
+                        VALUE 1234567890123456789012345.
+       01  UP-25        PIC  9(25) COMP-3
+                        VALUE 1234567890123456789012345.
+       01  UD-25-HI     PIC  9(25)
+                        VALUE 1234567890123456789012346.
+      * === 30-digit ===
+       01  UD-30        PIC  9(30)
+                        VALUE 123456789012345678901234567890.
+       01  UP-30        PIC  9(30) COMP-3
+                        VALUE 123456789012345678901234567890.
+       01  UD-30-HI     PIC  9(30)
+                        VALUE 123456789012345678901234567891.
+      * === 38-digit (max) ===
+       01  UD-38        PIC  9(38)
+                        VALUE 12345678901234567890123456789012345678.
+       01  UP-38        PIC  9(38) COMP-3
+                        VALUE 12345678901234567890123456789012345678.
+       01  UD-38-HI     PIC  9(38)
+                        VALUE 12345678901234567890123456789012345679.
+      * === Zero ===
+       01  UD-Z20       PIC  9(20)       VALUE 0.
+       01  UP-Z20       PIC  9(20) COMP-3 VALUE 0.
+       01  SD-Z20       PIC S9(20)       VALUE 0.
+       01  SP-Z20       PIC S9(20) COMP-3 VALUE 0.
+       01  SP-NZ20      PIC S9(20) COMP-3 VALUE -0.
+      * === With decimal scale ===
+       01  UD-20D       PIC  9(18)V99
+                        VALUE 123456789012345678.99.
+       01  UP-20D       PIC  9(18)V99 COMP-3
+                        VALUE 123456789012345678.99.
+       01  UP-22D       PIC  9(18)V9(4) COMP-3
+                        VALUE 123456789012345678.9900.
+       01  UD-22D       PIC  9(18)V9(4)
+                        VALUE 123456789012345678.9901.
+       01  SD-20D       PIC S9(18)V99
+                        VALUE -123456789012345678.99.
+       01  SP-20D       PIC S9(18)V99 COMP-3
+                        VALUE -123456789012345678.99.
+       01  SP-22D       PIC S9(18)V9(4) COMP-3
+                        VALUE -123456789012345678.9901.
+
+       PROCEDURE        DIVISION.
+       MAIN.
+
+      * -- 19-digit equal --
+           IF UD-19 <> UP-19 DISPLAY "19: eq fail".
+           IF UP-19 <> UD-19 DISPLAY "19: eq swap fail".
+      * -- 19-digit greater/less --
+           IF UD-19-HI <= UP-19 DISPLAY "19: gt fail".
+           IF UP-19-LO >= UD-19 DISPLAY "19: lt fail".
+
+      * -- 20-digit equal --
+           IF UD-20 <> UP-20 DISPLAY "20u: eq fail".
+           IF UP-20 <> UD-20 DISPLAY "20u: eq swap fail".
+      * -- 20-digit greater/less --
+           IF UD-20-HI <= UP-20 DISPLAY "20u: disp>pack fail".
+           IF UP-20-LO >= UD-20 DISPLAY "20u: pack<disp fail".
+           IF UP-20-HI <= UD-20 DISPLAY "20u: pack>disp fail".
+      * -- 20-digit operators --
+           IF UD-20 <  UP-20 DISPLAY "20u: eq but lt fail".
+           IF UD-20 >  UP-20 DISPLAY "20u: eq but gt fail".
+           IF UD-20 >= UP-20 CONTINUE
+           ELSE                DISPLAY "20u: ge fail"
+           END-IF.
+           IF UD-20 <= UP-20 CONTINUE
+           ELSE                DISPLAY "20u: le fail"
+           END-IF.
+
+      * -- 20-digit signed equal --
+           IF SD-20 <> SP-20 DISPLAY "20s: eq fail".
+           IF SD-N20 <> SP-N20 DISPLAY "20s: neg eq fail".
+      * -- signed: positive > negative --
+           IF SD-20 <= SP-N20 DISPLAY "20s: pos>neg fail".
+           IF SP-N20 >= SD-20 DISPLAY "20s: neg<pos fail".
+      * -- signed negative ordering --
+           IF SD-N20  <= SP-N20B DISPLAY "20s: -890 > -891 fail".
+           IF SP-N20B >= SD-N20  DISPLAY "20s: -891 < -890 fail".
+
+      * -- 25-digit --
+           IF UD-25 <> UP-25 DISPLAY "25: eq fail".
+           IF UD-25-HI <= UP-25 DISPLAY "25: gt fail".
+
+      * -- 30-digit --
+           IF UD-30 <> UP-30 DISPLAY "30: eq fail".
+           IF UD-30-HI <= UP-30 DISPLAY "30: gt fail".
+
+      * -- 38-digit (max) --
+           IF UD-38 <> UP-38 DISPLAY "38: eq fail".
+           IF UD-38-HI <= UP-38 DISPLAY "38: gt fail".
+
+      * -- Zero comparisons --
+           IF UD-Z20 <> UP-Z20 DISPLAY "z: u eq fail".
+           IF SD-Z20 <> SP-Z20 DISPLAY "z: s eq fail".
+           IF SD-Z20 <> SP-NZ20 DISPLAY "z: signed-zero fail".
+           IF UP-20  <= UD-Z20 DISPLAY "z: nonzero>zero fail".
+           IF UD-Z20 >= UP-20  DISPLAY "z: zero<nonzero fail".
+           IF SP-N20 >= SD-Z20 DISPLAY "z: neg<zero fail".
+           IF SD-Z20 <= SP-N20 DISPLAY "z: zero>neg fail".
+
+      * -- Scale comparisons --
+           IF UD-20D <> UP-20D DISPLAY "sc: eq fail".
+           IF UP-22D <> UD-20D DISPLAY "sc: diff-scale eq fail".
+           IF UD-22D <= UP-20D DISPLAY "sc: .9901>.99 fail".
+           IF SD-20D <> SP-20D DISPLAY "sc: neg eq fail".
+           IF SP-22D >= SD-20D DISPLAY "sc: neg -.9901<-.99 fail".
+
+           GOBACK.
+])
+
+AT_CHECK([$COMPILE prog.cob], [0], [], [])
+AT_CHECK([$COBCRUN_DIRECT ./prog], [0], [], [])
+
+# also check "not optimized during codegen"
+AT_CHECK([$COMPILE -fno-fast-compare -C -o progalt.c prog.cob], [0], [], [])
+AT_CHECK([$COMPILE progalt.c], [0], [], [])
+AT_CHECK([$COBCRUN_DIRECT ./progalt], [0], [], [])
+
+AT_CLEANUP
+
+
 AT_SETUP([PACKED-DECIMAL numeric test (1)])
 AT_KEYWORDS([PACKED-DECIMAL COMP-3])
 

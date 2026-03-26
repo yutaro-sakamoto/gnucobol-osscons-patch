@@ -4026,6 +4026,170 @@ cob_bcd_cmp (cob_field *f1, cob_field *f2)
 }
 #endif
 
+/*
+ * Compare a PACKED (COMP-3/COMP-6) field with a DISPLAY numeric field
+ * without using GMP. Extracts BCD nibbles and ASCII digit bytes directly
+ * and compares digit-by-digit after decimal-point alignment.
+ *
+ * f1, f2: the two fields (one PACKED, one DISPLAY, in either order)
+ * f1_type, f2_type: their COB_FIELD_TYPE values
+ *
+ * Returns: negative if f1 < f2, 0 if equal, positive if f1 > f2
+ */
+static int
+cob_cmp_packed_display (cob_field *f1, const int f1_type,
+			cob_field *f2, const int f2_type)
+{
+	cob_field	*f_packed, *f_disp;
+	int		swapped;
+	unsigned char	pd[COB_MAX_DIGITS + 1];
+	unsigned char	dd[COB_MAX_DIGITS + 1];
+	int		p_count, d_count;
+	int		p_sign, d_sign, disp_sign_raw;
+	int		p_scale, d_scale;
+	int		p_int, d_int;
+	int		max_int, max_frac, total;
+	int		i, pi, di, result;
+
+	/* Arrange: f_packed = COMP-3/COMP-6, f_disp = DISPLAY */
+	if (f1_type == COB_TYPE_NUMERIC_PACKED) {
+		f_packed = f1; f_disp = f2; swapped = 0;
+	} else {
+		f_packed = f2; f_disp = f1; swapped = 1;
+	}
+
+	/* --- Extract packed (COMP-3/COMP-6) digits --- */
+	p_count = COB_FIELD_DIGITS (f_packed);
+	p_scale = COB_FIELD_SCALE (f_packed);
+	p_sign = packed_is_negative (f_packed) ? -1 : 1;
+
+	{
+		const unsigned char	*data = f_packed->data;
+		const int	size = (int)f_packed->size;
+		const int	has_sign_nibble = !COB_FIELD_NO_SIGN_NIBBLE (f_packed);
+		/* total nibbles available for digits */
+		const int	total_nibbles = has_sign_nibble
+					? 2 * size - 1 : 2 * size;
+		int		skip = total_nibbles - p_count;
+		int		d = 0;
+		int		b;
+
+		for (b = 0; b < size && d < p_count; b++) {
+			/* high nibble */
+			if (skip > 0) {
+				skip--;
+			} else {
+				pd[d++] = data[b] >> 4;
+			}
+			/* low nibble — but last nibble is sign, not digit */
+			if (b == size - 1 && has_sign_nibble) {
+				break;
+			}
+			if (skip > 0) {
+				skip--;
+			} else if (d < p_count) {
+				pd[d++] = data[b] & 0x0F;
+			}
+		}
+		p_count = d;
+	}
+
+	/* --- Extract display digits --- */
+	d_count = COB_FIELD_DIGITS (f_disp);
+	d_scale = COB_FIELD_SCALE (f_disp);
+
+	{
+		const unsigned char	*data;
+		int			size, d;
+
+		/* COB_GET_SIGN_ADJUST may convert overpunched sign byte
+		   to a plain digit in-place; COB_PUT_SIGN_ADJUSTED restores it */
+		disp_sign_raw = COB_GET_SIGN_ADJUST (f_disp);
+		d_sign = (disp_sign_raw < 0) ? -1 : 1;
+
+		data = COB_FIELD_DATA (f_disp);
+		size = (int)COB_FIELD_SIZE (f_disp);
+
+		d = 0;
+		for (i = 0; i < size && d < d_count; i++) {
+			dd[d++] = COB_D2I (data[i]);
+		}
+		d_count = d;
+
+		COB_PUT_SIGN_ADJUSTED (f_disp, disp_sign_raw);
+	}
+
+	/* --- Check for zero values (handle signed-zero) --- */
+	{
+		int	p_is_zero = 1, d_is_zero = 1;
+		for (i = 0; i < p_count; i++) {
+			if (pd[i] != 0) { p_is_zero = 0; break; }
+		}
+		for (i = 0; i < d_count; i++) {
+			if (dd[i] != 0) { d_is_zero = 0; break; }
+		}
+		if (p_is_zero && d_is_zero) {
+			return 0;
+		}
+		/* treat zero as positive for sign comparison */
+		if (p_is_zero) p_sign = 1;
+		if (d_is_zero) d_sign = 1;
+	}
+
+	/* --- Quick sign comparison --- */
+	if (p_sign != d_sign) {
+		result = (p_sign > d_sign) ? 1 : -1;
+		return swapped ? -result : result;
+	}
+
+	/* --- Align by decimal point and compare digit by digit --- */
+	p_int = p_count - p_scale;	/* integer part digit count */
+	d_int = d_count - d_scale;
+	max_int  = (p_int > d_int) ? p_int : d_int;
+	max_frac = (p_scale > d_scale) ? p_scale : d_scale;
+	total = max_int + max_frac;
+
+	result = 0;
+	pi = 0;
+	di = 0;
+	{
+		const int	p_pad_left  = max_int  - p_int;
+		const int	d_pad_left  = max_int  - d_int;
+		const int	p_pad_right = max_frac - p_scale;
+		const int	d_pad_right = max_frac - d_scale;
+
+		for (i = 0; i < total; i++) {
+			unsigned char pv, dv;
+
+			/* packed digit or zero-padding */
+			if (i < p_pad_left || i >= total - p_pad_right) {
+				pv = 0;
+			} else {
+				pv = (pi < p_count) ? pd[pi++] : 0;
+			}
+
+			/* display digit or zero-padding */
+			if (i < d_pad_left || i >= total - d_pad_right) {
+				dv = 0;
+			} else {
+				dv = (di < d_count) ? dd[di++] : 0;
+			}
+
+			if (pv != dv) {
+				result = (pv > dv) ? 1 : -1;
+				break;
+			}
+		}
+	}
+
+	/* negate result for negative values (both have same sign here) */
+	if (p_sign < 0) {
+		result = -result;
+	}
+
+	return swapped ? -result : result;
+}
+
 int
 cob_numeric_cmp (cob_field *f1, cob_field *f2)
 {
@@ -4076,6 +4240,17 @@ cob_numeric_cmp (cob_field *f1, cob_field *f2)
 				const cob_s64_t	f2_num = cob_get_llint (&c2);
 				return (f1_num < f2_num) ? -1 : (f1_num > f2_num);
 			}
+		}
+	}
+
+	/* COMP-3/COMP-6 vs DISPLAY with non-negative scale:
+	   compare by direct digit extraction, avoiding GMP */
+	if (COB_FIELD_SCALE (f1) >= 0 && COB_FIELD_SCALE (f2) >= 0) {
+		if ((f1_type == COB_TYPE_NUMERIC_PACKED
+		  && f2_type == COB_TYPE_NUMERIC_DISPLAY)
+		 || (f1_type == COB_TYPE_NUMERIC_DISPLAY
+		  && f2_type == COB_TYPE_NUMERIC_PACKED)) {
+			return cob_cmp_packed_display (f1, f1_type, f2, f2_type);
 		}
 	}
 
